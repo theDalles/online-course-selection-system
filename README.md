@@ -67,8 +67,8 @@ cd your-repo-name
     ```sql
     CREATE DATABASE db_course_selection CHARACTER SET utf8mb4;
     ```
-2.  找到项目resources目录下的 SQL 脚本文件course_selection_system，并将其导入到刚创建的数据库中，以初始化表结构和基础数据。
-3.  修改配置文件 `application.properties` ，更新数据库连接信息。
+2.  找到项目resources目录下的 SQL 脚本文件course_selection_system，并将其导入到刚创建的数据库中，以初始化表结构和基础数据。如使用NaviCat等数据库管理软件，完成软件配置后直接将SQL脚本拖入即可。
+3.  修改配置文件 `application.properties` ，更新数据库连接信息，替换端口号、用户名及密码。
 
     ```properties
     # application.properties
