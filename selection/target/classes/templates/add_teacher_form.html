@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>添加教师</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="container">
+    <h2>添加新教师</h2>
+    <div th:if="${message}" class="alert alert-success">
+        <p th:text="${message}"></p>
+    </div>
+    <div th:if="${error}" class="alert alert-danger">
+        <p th:text="${error}"></p>
+    </div>
+    <form th:action="@{/admin/teacher/add}" th:object="${teacher}" method="post">
+        <label for="tno">教师号:</label>
+        <input type="text" id="tno" name="tno" th:field="*{tno}" required><br>
+
+        <label for="tname">姓名:</label>
+        <input type="text" id="tname" name="tname" th:field="*{tname}" required><br>
+
+        <label for="tdept">院系:</label>
+        <input type="text" id="tdept" name="tdept" th:field="*{tdept}" required><br>
+
+        <button type="submit">添加教师</button>
+    </form>
+    <p><a href="/admin/dashboard">返回管理面板</a></p>
+</div>
+</body>
+</html>

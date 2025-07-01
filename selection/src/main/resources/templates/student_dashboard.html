@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>学生仪表盘</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h1>
+        <span>学生仪表盘</span>
+        <span class="header-right">
+          欢迎, <span th:text="${student.sname}"></span>
+             <a th:href="@{/student/profile/edit}" style="margin-left: 20px;">修改个人信息</a>
+            <a th:href="@{/change-password}">修改密码</a>
+            <a th:href="@{/logout}">退出登录</a>
+        </span>
+    </h1>
+
+    <div th:if="${message}" class="message" th:text="${message}"></div>
+    <div th:if="${error}" class="error" th:text="${error}"></div>
+
+    <div class="dashboard-grid">
+        <div>
+            <h2>我的课程</h2>
+            <div th:if="${myCourses.isEmpty()}">
+                <p>您尚未选择任何课程。</p>
+            </div>
+            <table th:unless="${myCourses.isEmpty()}">
+                <thead>
+                <tr>
+                    <th>课程号</th>
+                    <th>课程名</th>
+                    <th>学分</th>
+                    <th>授课教师</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="course : ${myCourses}">
+                    <td th:text="${course.cno}"></td>
+                    <td th:text="${course.cname}"></td>
+                    <td th:text="${course.credit}"></td>
+                    <td th:text="${course.teacherName}"></td>
+                    <td>
+                        <form th:action="@{/student/course/drop/{cno}(cno=${course.cno})}" method="post" onsubmit="return confirm('确认要退选这门课吗?');">
+                            <button type="submit" class="btn btn-danger">退课</button>
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+            <h2>可选课程列表</h2>
+            <div th:if="${availableCourses.isEmpty()}">
+                <p>暂无可供选择的课程。</p>
+            </div>
+            <table th:unless="${availableCourses.isEmpty()}">
+                <thead>
+                <tr>
+                    <th>课程号</th>
+                    <th>课程名</th>
+                    <th>学分</th>
+                    <th>授课教师</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="course : ${availableCourses}">
+                    <td th:text="${course.cno}"></td>
+                    <td th:text="${course.cname}"></td>
+                    <td th:text="${course.credit}"></td>
+                    <td th:text="${course.teacherName}"></td>
+                    <td>
+                        <form th:action="@{/student/course/select/{cno}(cno=${course.cno})}" method="post">
+                            <button type="submit" class="btn">选课</button>
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

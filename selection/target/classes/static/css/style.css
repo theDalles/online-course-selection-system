@@ -1,0 +1,114 @@
+/* Reset 和基础样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: #f9fafb;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* 容器 */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #ff0;
+    padding: 30px 40px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+/* 标题 */
+h1, h2, h3 {
+    color: #222;
+    margin-bottom: 20px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* 段落 */
+p {
+    margin-bottom: 16px;
+    font-size: 1rem;
+    color: #555;
+}
+
+/* 按钮 */
+button, .btn {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,123,255,0.3);
+}
+
+button:hover, .btn:hover {
+    background-color: #0056b3;
+    box-shadow: 0 6px 12px rgba(0,86,179,0.5);
+}
+
+/* 输入框 */
+input[type="text"], input[type="password"], input[type="email"], textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1.8px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus, textarea:focus {
+    border-color: #007BFF;
+    outline: none;
+    box-shadow: 0 0 6px rgba(0,123,255,0.4);
+}
+
+/* 链接 */
+a {
+    color: #007BFF;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+/* 表格 */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 25px;
+}
+
+th, td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: #f4f6f8;
+    font-weight: 600;
+}
+
+/* 响应式 */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px 15px;
+    }
+
+    button, .btn {
+        width: 100%;
+    }
+}

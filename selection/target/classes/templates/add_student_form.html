@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>添加学生</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="container">
+    <h2>添加新学生</h2>
+    <div th:if="${message}" class="alert alert-success">
+        <p th:text="${message}"></p>
+    </div>
+    <div th:if="${error}" class="alert alert-danger">
+        <p th:text="${error}"></p>
+    </div>
+    <form th:action="@{/admin/student/add}" th:object="${student}" method="post">
+        <label for="sno">学号:</label>
+        <input type="text" id="sno" name="sno" th:field="*{sno}" required><br>
+
+        <label for="sname">姓名:</label>
+        <input type="text" id="sname" name="sname" th:field="*{sname}" required><br>
+
+        <label for="sage">年龄:</label>
+        <input type="number" id="sage" name="sage" th:field="*{sage}" required><br>
+
+        <label for="sgender">性别:</label>
+        <select id="sgender" name="sgender" th:field="*{sgender}" required>
+            <option value="">请选择</option>
+            <option value="男">男</option>
+            <option value="女">女</option>
+        </select><br>
+
+        <label for="sdept">院系:</label>
+        <input type="text" id="sdept" name="sdept" th:field="*{sdept}" required><br>
+
+        <button type="submit">添加学生</button>
+    </form>
+    <p><a href="/admin/dashboard">返回管理面板</a></p>
+</div>
+</body>
+</html>

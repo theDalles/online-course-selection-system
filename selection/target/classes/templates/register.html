@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>注册 - 学生选课系统</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+<body>
+<div class="container form-container">
+    <h1>用户注册</h1>
+    <p>注册后，您的用户名将作为您的学号/教师号，用于完善个人信息。</p>
+
+    <div th:if="${error}" class="error" th:text="${error}"></div>
+
+    <form th:action="@{/register}" method="post">
+        <div>
+            <label for="username">用户名 (学号/教师号):</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div>
+            <label for="password">密码:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div>
+            <label for="role">角色:</label>
+            <select id="role" name="role" required>
+                <option value="student">学生</option>
+                <option value="teacher">教师</option>
+            </select>
+        </div>
+        <button type="submit">注册</button>
+    </form>
+    <p style="text-align: center; margin-top: 20px;">
+        已有账户? <a th:href="@{/login}">返回登录</a>
+    </p>
+</div>
+</body>
+</html>

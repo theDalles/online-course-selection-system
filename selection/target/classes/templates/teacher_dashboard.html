@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>教师仪表盘</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h1>
+        <span>教师仪表盘</span>
+        <span class="header-right">
+        欢迎, <span th:text="${teacher.tname}"></span>
+
+        <a th:href="@{/teacher/profile/edit}" style="margin-left: 20px;">修改个人信息</a>
+        <a th:href="@{/change-password}" style="margin-left: 20px;">修改密码</a>
+        <a th:href="@{/logout}">退出登录</a>
+    </span>
+    </h1>
+
+    <div th:if="${message}" class="message" th:text="${message}"></div>
+    <div th:if="${error}" class="error" th:text="${error}"></div>
+
+    <h2>我开设的课程</h2>
+    <a th:href="@{/teacher/course/create}" class="btn" style="margin-bottom: 20px;">开设新课程</a>
+
+    <div th:if="${myCourses.isEmpty()}">
+        <p>您尚未开设任何课程。</p>
+    </div>
+    <table th:unless="${myCourses.isEmpty()}">
+        <thead>
+        <tr>
+            <th>课程号</th>
+            <th>课程名</th>
+            <th>学分</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="course : ${myCourses}">
+            <td th:text="${course.cno}"></td>
+            <td th:text="${course.cname}"></td>
+            <td th:text="${course.credit}"></td>
+            <td>
+                <a th:href="@{/teacher/course/detail/{cno}(cno=${course.cno})}" class="btn btn-secondary">查看选课学生</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

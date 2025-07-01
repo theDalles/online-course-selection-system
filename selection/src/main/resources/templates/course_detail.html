@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>课程详情</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+    <h1>
+        <span>课程详情</span>
+        <span class="header-right">
+            <a th:href="@{/teacher/dashboard}">返回仪表盘</a>
+        </span>
+    </h1>
+
+    <h2 th:text="|${course.cname} (${course.cno}) - 选课学生列表|"></h2>
+
+    <div th:if="${enrolledStudents.isEmpty()}">
+        <p>暂无学生选择此课程。</p>
+    </div>
+    <table th:unless="${enrolledStudents.isEmpty()}">
+        <thead>
+        <tr>
+            <th>学号</th>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>性别</th>
+            <th>院系</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="student : ${enrolledStudents}">
+            <td th:text="${student.sno}"></td>
+            <td th:text="${student.sname}"></td>
+            <td th:text="${student.sage}"></td>
+            <td th:text="${student.sgender}"></td>
+            <td th:text="${student.sdept}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
